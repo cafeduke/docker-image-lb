@@ -1,0 +1,16 @@
+# The web-server in this case the react app by default listens at port 3000
+upstream web-server 
+{
+  server ${ORIGIN_SERVER};
+}
+
+# Configure all requests to be load balanced to web-server
+server 
+{
+  listen 80;
+
+  location /
+  {
+    proxy_pass http://web-server;
+  }
+}
