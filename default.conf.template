@@ -1,4 +1,3 @@
-# The web-server in this case the react app by default listens at port 3000
 upstream web-server 
 {
   server ${ORIGIN_SERVER};
@@ -8,7 +7,7 @@ upstream web-server
 server 
 {
   listen 80;
-
+  resolver 127.0.0.11 valid=10s ipv6=off;
   location /
   {
     proxy_pass http://web-server;
